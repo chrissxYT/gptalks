@@ -1,0 +1,50 @@
+A first look at the GymPeg system
+by Christian Erwin "chrissx" Häußler aka. the Chef
+
+Content:
+· The first fun in 7-Zip
+· firefox.exe
+· Writing the first tools
+· Dumping the frist information
+
+The first fun in 7-Zip
+
+Opening 7-Zip always works, because you have to open archives...
+
+...but it's called "7-Zip File Manager" for a reason...
+
+#insert screen here
+
+The first discovery: Schuladmin
+
+#insert screen here
+
+The first file sharing "exploit": 73Wartung
+
+#insert screen here
+
+And now for something completely different: firefox.exe
+
+You have to be able to browse the web.
+(most of the time, some teachers block it)
+So you have to be able to use Firefox or Chrome.
+Sometimes Chrome is blocked, but Firefox has only been blocked once.
+
+But how does blocking work?
+
+@whitelist.jpg
+
+They whitelist executable names.
+
+@firefox_mv.png
+
+@firefox_rn.jpg
+
+...and you got unprivileged ACX. (Arbitrary Code eXecution)
+
+So now we can play DOOM with DOSBox (and get caught)
+...and run our own tools ;)
+
+Writing the first tools
+
+
