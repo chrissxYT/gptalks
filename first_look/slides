@@ -5,7 +5,7 @@ Content:
 · The first fun in 7-Zip
 · firefox.exe
 · Writing the first tools
-· Dumping the frist information
+→ Dumping the first information
 
 The first fun in 7-Zip
 
@@ -47,4 +47,111 @@ So now we can play DOOM with DOSBox (and get caught)
 
 Writing the first tools
 
+I 💖 C#.
 
+Operation environment:
+· Keyboards that suck balls
+· You can get caught within seconds
+· Even cmd is blocked, so console applications can't be guaranteed to work
+
+So we use: C#.NET with WinForms·
+It also makes UI a lot easier.
+
+SchoolUtils (the original monolithic one) - "Initial Commit"
+
+Functionality
+
+List installed apps:
+foreach (string a in Util.installed_apps)
+	if (!listBox1.Items.Contains(a))
+		listBox1.Items.Add(a);
+
+List<string> installed_apps
+{
+	get
+	{
+		List<string> l = new List<string>();
+		RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
+		foreach (string skName in rk.GetSubKeyNames())
+			try
+			{
+				l.Add(rk.OpenSubKey(skName).GetValue("DisplayName").ToString());
+			}
+			catch { }
+		l.Sort();
+		return l;
+	}
+}
+
+List apps that have a path:
+foreach (string a in Util.apps_with_paths)
+	if (!listBox2.Items.Contains(a))
+		listBox2.Items.Add(a);
+
+List<string> installed_apps
+{
+	get
+	{
+		List<string> l = new List<string>();
+		RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths");
+		foreach (string skn in rk.GetSubKeyNames())
+			try
+			{
+				l.Add(rk.OpenSubKey(skn, false).GetValue(null).ToString());
+			}
+			catch { }
+		return l;
+	}
+}
+
+Pop a shell:
+File.Copy(@"C:\Windows\System32\cmd.exe", @"temp_dir\firefox.exe");
+Process.Start(@"temp_dir\firefox.exe");
+
+Quickly open 7-Zip:
+Process.Start(@"C:\Program Files\7-Zip\7zFM.exe");
+
+Copy a directory you wouldn't have access to and open it in explorer:
+Util.copy_dir(source, dest);
+Process.Start("explorer", $"/select,{dest}");
+
+Open Google Drive to phone some data home:
+Process.Start("chrome", "https://drive.google.com/drive/my-drive");
+
+Start app with path:
+Process.Start(listBox2.SelectedItem.ToString());
+
+Dump the registry:
+BufferedStream bs = new BufferedStream(new GZipStream(File.Open("reg_dump.xml.gz", FileMode.Create), CompressionLevel.Optimal, false), 8192);
+Util.reg_save(bs);
+bs.Close();
+
+Pasting Util.reg_save here is too much, it's like 100 lines of code.
+
+Dump installed apps:
+BufferedStream bs = new BufferedStream(new GZipStream(File.Open("uninstallable_apps.gz", FileMode.Create), CompressionLevel.Optimal, false), 8192);
+foreach (string a in Util.installed_apps)
+	bs.Write(a + "\r\n", Encoding.UTF8);
+bs.Close();
+
+Dump apps with path:
+BufferedStream bs = new BufferedStream(new GZipStream(File.Open("apps_with_paths.gz", FileMode.Create), CompressionLevel.Optimal, false), 8192);
+foreach (string a in Util.apps_with_paths)
+	bs.Write(a + "\r\n", Encoding.UTF8);
+bs.Close();
+
+Open a help screen:
+Process.Start("chrome", "https://chrissx.lima-city.de/su_desc.png");
+
+With these tools we can dump
+· the registry
+· all installed apps
+automatically and
+· many logs
+manually.
+
+But more about that in another talk.
+
+Questions?
+   No?
+   ok.
