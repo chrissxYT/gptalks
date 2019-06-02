@@ -1,5 +1,5 @@
 A first look at the GymPeg system
-by Christian Erwin "chrissx" Häußler aka. the Chef
+by Christian Erwin "chrissx" Häußler aka. Who's that guy?!
 
 Content:
 · The first fun in 7-Zip
@@ -13,11 +13,13 @@ Opening 7-Zip always works, because you have to open archives...
 
 ...but it's called "7-Zip File Manager" for a reason...
 
-#insert screen here
+#should put a better screen here
+@7zfm.png
 
 The first discovery: Schuladmin
 
-#insert screen here
+#should put a better screen here
+@73.png
 
 The first file sharing "exploit": 73Wartung
 
@@ -47,7 +49,7 @@ So now we can play DOOM with DOSBox (and get caught)
 
 Writing the first tools
 
-I 💖 C#.
+I ♥ C#.
 
 Operation environment:
 · Keyboards that suck balls
