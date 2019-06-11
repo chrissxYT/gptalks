@@ -1,0 +1,10 @@
+# moderne browser werkzeuge
+* vimium
+* 1password/keepass/lastpass/whatever
+* adblockplus/ublock/opera vpn
+* afd blocker
+* dark mode
+* owncloud bookmarks
+* enhanced github
+* adfly and shortest skipper
+* watch2gether
